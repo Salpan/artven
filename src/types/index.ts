@@ -5,7 +5,7 @@ export interface IdeaCard {
   id: string;
   title: string;
   subtitle: string;
-  image: string;
+  gradient: string;
   promptTemplate: string;
 }
 
@@ -13,6 +13,7 @@ export interface WishItem {
   id: string;
   title: string;
   category: string;
-  image: string;
+  gradient: string;
+  height: number;
   saved: boolean;
 }

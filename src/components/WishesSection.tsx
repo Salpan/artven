@@ -90,7 +90,11 @@ export function WishesSection({
               className="wish-card"
               onClick={() => onSelectWish(`Create a concept inspired by "${item.title}"`)}
             >
-              <img src={item.image} alt={item.title} className="wish-image" />
+              <div
+  className="wish-image"
+  style={{ background: item.gradient, height: `${item.height}px` }}
+/>
+
 
               <button
                 type="button"

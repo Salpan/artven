@@ -24,7 +24,8 @@ export function IdeasSection({ ideas, onSelectIdea, onRefresh }: IdeasSectionPro
             className="idea-card"
             onClick={() => onSelectIdea(idea.promptTemplate)}
           >
-            <img src={idea.image} alt={idea.title} className="idea-thumb" />
+            <div className="idea-thumb" style={{ background: idea.gradient }} />
+
 
             <div className="idea-info">
               <h3>{idea.title}</h3>

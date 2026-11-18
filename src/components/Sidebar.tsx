@@ -13,6 +13,7 @@ const NAV_ITEMS: { id: NavTab; label: string; icon: typeof LayoutGrid; hasDot?: 
   { id: 'chat', label: 'Chat', icon: MessageSquare },
   { id: 'saved', label: 'Saved', icon: Bookmark },
   { id: 'results', label: 'Results', icon: Layers, hasDot: true },
+  { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
 export function Sidebar({ activeTab, onSelectTab, onSearchClick }: SidebarProps) {
@@ -33,7 +34,9 @@ export function Sidebar({ activeTab, onSelectTab, onSearchClick }: SidebarProps)
                 onClick={() => onSelectTab(item.id)}
                 className={`nav-item ${isActive ? 'active' : ''}`}
               >
-                <Icon size={18} />
+                <div className="nav-icon-box">
+                  <Icon size={18} />
+                </div>
                 <span>
                   {item.label}
                   {item.hasDot && <span className="status-dot" />}
@@ -43,14 +46,6 @@ export function Sidebar({ activeTab, onSelectTab, onSearchClick }: SidebarProps)
           })}
         </nav>
       </div>
-
-      <button
-        onClick={() => onSelectTab('settings')}
-        className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`}
-      >
-        <Settings size={18} />
-        <span>Settings</span>
-      </button>
     </aside>
   );
 }
