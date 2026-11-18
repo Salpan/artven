@@ -1,0 +1,158 @@
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.categoriesBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.categoriesList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.categoriesList::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryPill {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.categoryPill:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.categoryPillActive {
+  background: #ffffff;
+  color: #0b0b0d;
+  font-weight: 600;
+}
+
+.searchInputBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.searchInputBox input {
+  width: 140px;
+  font-size: 13px;
+}
+
+.wishesGrid {
+  column-count: 5;
+  column-gap: 16px;
+}
+
+.wishCard {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-surface);
+  cursor: pointer;
+  display: block;
+}
+
+.wishImage {
+  position: relative;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+.wishImage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.22), transparent 60%);
+  pointer-events: none;
+}
+
+.wishCard:hover .wishImage {
+  transform: scale(1.04);
+}
+
+.bookmarkBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  color: #141417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.bookmarkBtn:hover {
+  background: #ffffff;
+}
+
+.bookmarkBtnSaved {
+  background: var(--accent-purple);
+  color: #0b0b0d;
+}
+
+.wishOverlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 32px 14px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 60%);
+}
+
+.wishTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border-radius: 16px;
+  border: 1px dashed var(--border-subtle);
+}
+
+@media (max-width: 1200px) {
+  .wishesGrid {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .wishesGrid {
+    column-count: 2;
+  }
+}

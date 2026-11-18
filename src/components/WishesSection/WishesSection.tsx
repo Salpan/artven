@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Bookmark, Search, X } from 'lucide-react';
-import type { WishItem } from '../types';
-
+import styles from './WishesSection.module.css';
+import type { WishItem } from '../../types';
 
 interface WishesSectionProps {
   categories: string[];
@@ -23,11 +23,15 @@ export function WishesSection({
   const [isSearching, setIsSearching] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredItems = items.filter((item) => {
-    const matchesCategory = activeCategory === 'For you' || item.category === activeCategory;
-    const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredItems = useMemo(
+    () =>
+      items.filter((item) => {
+        const matchesCategory = activeCategory === 'For you' || item.category === activeCategory;
+        const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      }),
+    [items, activeCategory, searchQuery]
+  );
 
   const handleCloseSearch = () => {
     setIsSearching(false);
@@ -35,26 +39,27 @@ export function WishesSection({
   };
 
   return (
-    <section className="wishes-section">
-      <h2>Wishes</h2>
+    <section>
+      <h2 className={styles.title}>Wishes</h2>
 
-      {/* Панель категорий и поиска */}
-      <div className="categories-bar">
-        <div className="categories-list">
+      <div className={styles.categoriesBar}>
+        <div className={styles.categoriesList}>
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => onSelectCategory(category)}
-              className={`category-pill ${activeCategory === category ? 'active' : ''}`}
+              className={`${styles.categoryPill} ${
+                activeCategory === category ? styles.categoryPillActive : ''
+              }`}
             >
               {category}
             </button>
           ))}
         </div>
 
-        <div className="category-search">
+        <div>
           {isSearching ? (
-            <div className="search-input-box">
+            <div className={styles.searchInputBox}>
               <Search size={14} />
               <input
                 type="text"
@@ -79,26 +84,24 @@ export function WishesSection({
         </div>
       </div>
 
-      {/* Сетка карточек */}
       {filteredItems.length === 0 ? (
-        <div className="empty-state">No items found for this filter.</div>
+        <div className={styles.emptyState}>No items found for this filter.</div>
       ) : (
-        <div className="wishes-grid">
+        <div className={styles.wishesGrid}>
           {filteredItems.map((item) => (
             <article
               key={item.id}
-              className="wish-card"
+              className={styles.wishCard}
               onClick={() => onSelectWish(`Create a concept inspired by "${item.title}"`)}
             >
               <div
-  className="wish-image"
-  style={{ background: item.gradient, height: `${item.height}px` }}
-/>
-
+                className={styles.wishImage}
+                style={{ background: item.gradient, height: `${item.height}px` }}
+              />
 
               <button
                 type="button"
-                className={`bookmark-btn ${item.saved ? 'saved' : ''}`}
+                className={`${styles.bookmarkBtn} ${item.saved ? styles.bookmarkBtnSaved : ''}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   onToggleSave(item.id);
@@ -108,8 +111,8 @@ export function WishesSection({
                 <Bookmark size={15} fill={item.saved ? 'currentColor' : 'none'} />
               </button>
 
-              <div className="wish-overlay">
-                <span className="wish-title">{item.title}</span>
+              <div className={styles.wishOverlay}>
+                <span className={styles.wishTitle}>{item.title}</span>
               </div>
             </article>
           ))}

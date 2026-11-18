@@ -1,6 +1,7 @@
 import { Sparkles, Plus, SlidersHorizontal, ArrowUp } from 'lucide-react';
-import type { PromptMode } from '../types';
-
+import { AI_MODELS } from '../../data/mockData';
+import styles from './PromptBox.module.css';
+import type { PromptMode } from '../../types';
 
 interface PromptBoxProps {
   mode: PromptMode;
@@ -29,34 +30,33 @@ export function PromptBox({
   };
 
   return (
-    <section className="hero-section">
-      <h1 className="hero-title">What will you create next?</h1>
+    <section className={styles.heroSection}>
+      <h1 className={styles.heroTitle}>What will you create next?</h1>
 
-      {/* Переключатель Chat / Tools */}
-      <div className="mode-switcher">
+      <div className={styles.modeSwitcher}>
         <button
-          className={`mode-btn ${mode === 'chat' ? 'active' : ''}`}
+          className={`${styles.modeBtn} ${mode === 'chat' ? styles.modeBtnActive : ''}`}
           onClick={() => onModeChange('chat')}
         >
           Chat
         </button>
         <button
-          className={`mode-btn ${mode === 'tools' ? 'active' : ''}`}
+          className={`${styles.modeBtn} ${mode === 'tools' ? styles.modeBtnActive : ''}`}
           onClick={() => onModeChange('tools')}
         >
           Tools
         </button>
       </div>
 
-      {/* Карточка ввода */}
-      <div className="prompt-card">
-        <div className="pro-banner">
+      <div className={styles.promptCard}>
+        <div className={styles.proBanner}>
           <Sparkles size={14} />
           <span>Unlock more features with Pro</span>
         </div>
 
-        <div className="prompt-input-wrapper">
+        <div className={styles.promptInputWrapper}>
           <textarea
+            className={styles.textarea}
             value={prompt}
             onChange={(e) => onPromptChange(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -64,28 +64,31 @@ export function PromptBox({
             rows={3}
           />
 
-          <div className="prompt-toolbar">
-            <div className="toolbar-left">
+          <div className={styles.promptToolbar}>
+            <div className={styles.toolbarLeft}>
               <button type="button" className="circle-btn" title="Attach file">
                 <Plus size={16} />
               </button>
 
-              <div className="model-select">
+              <div className={styles.modelSelect}>
                 <SlidersHorizontal size={14} />
                 <select
+                  className={styles.select}
                   value={selectedModel}
                   onChange={(e) => onModelChange(e.target.value)}
                 >
-                  <option value="Auto">Auto</option>
-                  <option value="Studio Pro">Studio Pro</option>
-                  <option value="Fast Draft">Fast Draft</option>
+                  {AI_MODELS.map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
 
             <button
               type="button"
-              className="submit-btn"
+              className={styles.submitBtn}
               onClick={onSubmit}
               disabled={!prompt.trim()}
               title="Generate"

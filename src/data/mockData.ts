@@ -1,6 +1,8 @@
 import type { IdeaCard, WishItem } from "../types";
 
 
+export const AI_MODELS = ['Auto', 'Studio Pro', 'Fast Draft'] as const;
+
 export const IDEAS_DATA: IdeaCard[] = [
   {
     id: '1',

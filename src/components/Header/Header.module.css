@@ -1,0 +1,79 @@
+.header {
+  height: 68px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logoMark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #9d8df1, #60a5fa, #c084fc, #9d8df1);
+  position: relative;
+}
+
+.logoMark::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: var(--bg-main);
+}
+
+.logoText {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.creditsPill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 4px 4px 14px;
+  border-radius: 999px;
+}
+
+.creditsCount {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e4e4e7;
+}
+
+.creditsCount svg {
+  color: var(--accent-purple);
+}
+
+.upgradeBtn {
+  background: var(--accent-purple);
+  color: #0b0b0d;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: 0.2s;
+}
+
+.upgradeBtn:hover {
+  background: var(--accent-purple-hover);
+}

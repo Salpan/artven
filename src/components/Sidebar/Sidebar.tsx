@@ -1,6 +1,6 @@
 import { Search, LayoutGrid, MessageSquare, Bookmark, Layers, Settings } from 'lucide-react';
-import type { NavTab } from '../types';
-
+import styles from './Sidebar.module.css';
+import type { NavTab } from '../../types';
 
 interface SidebarProps {
   activeTab: NavTab;
@@ -18,13 +18,13 @@ const NAV_ITEMS: { id: NavTab; label: string; icon: typeof LayoutGrid; hasDot?: 
 
 export function Sidebar({ activeTab, onSelectTab, onSearchClick }: SidebarProps) {
   return (
-    <aside className="sidebar">
-      <div className="sidebar-top">
-        <button className="icon-btn" onClick={onSearchClick} title="Search">
+    <aside className={styles.sidebar}>
+      <div className={styles.sidebarTop}>
+        <button className={styles.iconBtn} onClick={onSearchClick} title="Search">
           <Search size={18} />
         </button>
 
-        <nav className="sidebar-nav">
+        <nav className={styles.sidebarNav}>
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -32,14 +32,14 @@ export function Sidebar({ activeTab, onSelectTab, onSearchClick }: SidebarProps)
               <button
                 key={item.id}
                 onClick={() => onSelectTab(item.id)}
-                className={`nav-item ${isActive ? 'active' : ''}`}
+                className={`${styles.navItem} ${isActive ? styles.active : ''}`}
               >
-                <div className="nav-icon-box">
+                <div className={styles.navIconBox}>
                   <Icon size={18} />
                 </div>
-                <span>
+                <span className={styles.navLabel}>
                   {item.label}
-                  {item.hasDot && <span className="status-dot" />}
+                  {item.hasDot && <span className={styles.statusDot} />}
                 </span>
               </button>
             );

@@ -1,0 +1,100 @@
+.sidebar {
+  width: 72px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-subtle);
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebarTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: 0.2s;
+}
+
+.iconBtn:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.navIconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.navItem:hover {
+  color: var(--text-primary);
+}
+
+.navItem:hover .navIconBox {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.active {
+  color: var(--text-primary);
+}
+
+.active .navIconBox {
+  background: #232329;
+  color: #ffffff;
+}
+
+.navLabel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent-purple);
+}

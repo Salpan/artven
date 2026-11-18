@@ -1,4 +1,5 @@
 import { HelpCircle, Sparkles, User } from 'lucide-react';
+import styles from './Header.module.css';
 
 interface HeaderProps {
   credits: number;
@@ -7,23 +8,23 @@ interface HeaderProps {
 
 export function Header({ credits, onUpgrade }: HeaderProps) {
   return (
-    <header className="header">
-      <div className="logo">
-        <span className="logo-mark" />
-        <span className="logo-text">artven</span>
+    <header className={styles.header}>
+      <div className={styles.logo}>
+        <span className={styles.logoMark} />
+        <span className={styles.logoText}>artven</span>
       </div>
 
-      <div className="header-actions">
+      <div className={styles.headerActions}>
         <button className="circle-btn" title="Help">
           <HelpCircle size={16} />
         </button>
 
-        <div className="credits-pill">
-          <span className="credits-count">
+        <div className={styles.creditsPill}>
+          <span className={styles.creditsCount}>
             <Sparkles size={14} />
             {credits}
           </span>
-          <button className="upgrade-btn" onClick={onUpgrade}>
+          <button className={styles.upgradeBtn} onClick={onUpgrade}>
             Upgrade
           </button>
         </div>
