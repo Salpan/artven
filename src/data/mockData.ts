@@ -1,4 +1,4 @@
-import type { IdeaCard } from "../types";
+import type { IdeaCard, WishItem } from "../types";
 
 
 export const IDEAS_DATA: IdeaCard[] = [
