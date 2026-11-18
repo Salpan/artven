@@ -448,6 +448,9 @@ button {
   gap: 16px;
   overflow-x: auto;
   scrollbar-width: none;
+    padding-top: 4px;
+  margin-top: -4px;
+  padding-bottom: 4px;
 }
 
 .ideas-list::-webkit-scrollbar {
