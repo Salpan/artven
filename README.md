@@ -1,75 +1,43 @@
-# React + TypeScript + Vite
+# Artven — AI Creative Studio Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое задание: реализация пользовательского интерфейса платформы для генерации визуального и видеоконтента на базе **React + TypeScript + Vite**.
 
-Currently, two official plugins are available:
+## Стек технологий
+- **React 19** + **TypeScript** — компонентная архитектура и строгая типизация
+- **Vite** — быстрая сборка и dev-сервер
+- **CSS Modules** — изолированные стили без конфликтов имён классов и сторонних UI-фреймворков
+- **Lucide React** — векторные иконки
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Реализованный функционал
+- **Навигация (`Sidebar` & `Header`)**: переключение между разделами (`Home`, `Chat`, `Saved`, `Results`, `Settings`), отображение баланса кредитов и интерактивные уведомления (Toast).
+- **Панель генерации (`PromptBox`)**: переключатель режимов `Chat / Tools`, выбор AI-модели (`Auto`, `Studio Pro`, `Fast Draft`), отправка промпта по кнопке или по `Enter` с автоматическим списанием кредитов.
+- **Быстрые сценарии (`IdeasSection`)**: горизонтальная лента шаблонов с подстановкой промпта в один клик и кнопкой перемешивания карточек.
+- **Галерея стилей (`WishesSection`)**: адаптивная Masonry-сетка, фильтрация по категориям (`For you`, `Food`, `Jewelry`, `Bags` и др.), живой поиск по названию и сохранение карточек в закладки (`Saved`).
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+## Структура проекта
+```text
+src/
+├── components/
+│   ├── Header/         # Шапка, логотип, баланс кредитов
+│   ├── IdeasSection/   # Карточки быстрых промпт-шаблонов
+│   ├── PromptBox/      # Форма ввода промпта и выбор модели
+│   ├── Sidebar/        # Левая навигационная панель
+│   └── WishesSection/  # Фильтры, поиск и Masonry-галерея
+├── data/               # Моковые данные и константы
+├── types/              # TypeScript-интерфейсы
+├── App.tsx             # Корневой компонент и управление состоянием
+└── index.css           # Глобальные стили и CSS-переменные
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Запуск проекта локально
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Установка зависимостей
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Запуск в режиме разработки
+npm run dev
 
+# Сборка production-версии
+npm run build
 ```
