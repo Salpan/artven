@@ -8,38 +8,53 @@ export const IDEAS_DATA: IdeaCard[] = [
     id: '1',
     title: 'Product Profile',
     subtitle: 'Create consistent brand content',
-    gradient: 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)',
+    gradient: 'linear-gradient(135deg, #60a5fa 0%, #f472b6 100%)',
     promptTemplate: 'Create a consistent brand product profile for ',
   },
   {
     id: '2',
     title: 'Studio Shoot',
     subtitle: 'Full campaign photoshoot',
-    gradient: 'linear-gradient(135deg, #db2777 0%, #fb7185 100%)',
+    gradient: 'linear-gradient(135deg, #be185d 0%, #fb7185 100%)',
     promptTemplate: 'Generate a studio campaign photoshoot for ',
   },
   {
     id: '3',
     title: 'Smart Retouch',
     subtitle: 'Fix product imperfections',
-    gradient: 'linear-gradient(135deg, #4d7c0f 0%, #ca8a04 100%)',
+    gradient: 'linear-gradient(135deg, #f5f5f4 0%, #d6d3d1 100%)',
     promptTemplate: 'Retouch and remove imperfections from ',
   },
   {
     id: '4',
     title: 'Edit Background',
     subtitle: 'Set a new studio scene',
-    gradient: 'linear-gradient(135deg, #be185d 0%, #f59e0b 100%)',
+    gradient: 'linear-gradient(135deg, #fef08a 0%, #f9a8d4 100%)',
     promptTemplate: 'Replace the background with a clean studio scene for ',
   },
   {
     id: '5',
-    title: '3D Mockup',
+    title: '3D Product Mockup',
     subtitle: 'Place design on realistic objects',
     gradient: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
     promptTemplate: 'Create a realistic 3D product mockup for ',
   },
+  {
+    id: '6',
+    title: 'Social Video Ad',
+    subtitle: 'Dynamic motion for Reels & TikTok',
+    gradient: 'linear-gradient(135deg, #7c3aed 0%, #c084fc 100%)',
+    promptTemplate: 'Create a short dynamic video ad for ',
+  },
+  {
+    id: '7',
+    title: 'Model Lookbook',
+    subtitle: 'Try garments on virtual models',
+    gradient: 'linear-gradient(135deg, #059669 0%, #34d399 100%)',
+    promptTemplate: 'Generate a fashion model lookbook featuring ',
+  },
 ];
+
 
 export const WISH_CATEGORIES = [
   'For you',
