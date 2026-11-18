@@ -3,6 +3,7 @@
   margin-bottom: 40px;
 }
 
+/* Плавное затухание по правому краю */
 .ideasSection::after {
   content: '';
   position: absolute;
@@ -28,19 +29,32 @@
   letter-spacing: -0.01em;
 }
 
-.ideasList {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-top: 4px;
-  margin-top: -4px;
-  padding-bottom: 4px;
-  padding-right: 60px;
-  scrollbar-width: none;
+.marqueeViewport {
+  overflow: hidden;
+  padding-top: 6px;
+  margin-top: -6px;
+  padding-bottom: 6px;
 }
 
-.ideasList::-webkit-scrollbar {
-  display: none;
+.marqueeTrack {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marqueeScroll 38s linear infinite;
+}
+
+/* Остановка карусели при наведении, чтобы легко кликнуть по карточке */
+.marqueeViewport:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 8px));
+  }
 }
 
 .ideaCard {
@@ -48,7 +62,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  min-width: 420px;
+  width: 420px;
   flex-shrink: 0;
   background: linear-gradient(145deg, #1b1b20 0%, #131316 100%);
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -112,6 +126,6 @@
   }
 
   .ideaCard {
-    min-width: 320px;
+    width: 320px;
   }
 }

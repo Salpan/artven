@@ -9,6 +9,9 @@ interface IdeasSectionProps {
 }
 
 export function IdeasSection({ ideas, onSelectIdea, onRefresh }: IdeasSectionProps) {
+  // Дублируем массив для бесшовного бесконечного цикла
+  const loopedIdeas = [...ideas, ...ideas];
+
   return (
     <section className={styles.ideasSection}>
       <div className={styles.sectionHeader}>
@@ -18,33 +21,35 @@ export function IdeasSection({ ideas, onSelectIdea, onRefresh }: IdeasSectionPro
         </button>
       </div>
 
-      <div className={styles.ideasList}>
-        {ideas.map((idea) => (
-          <article
-            key={idea.id}
-            className={styles.ideaCard}
-            onClick={() => onSelectIdea(idea.promptTemplate)}
-          >
-            <div className={styles.ideaThumb} style={{ background: idea.gradient }} />
-
-            <div className={styles.ideaInfo}>
-              <h3>{idea.title}</h3>
-              <p>{idea.subtitle}</p>
-            </div>
-
-            <button
-              type="button"
-              className={styles.ideaAddBtn}
-              onClick={(e) => {
-                e.stopPropagation();
-                onSelectIdea(idea.promptTemplate);
-              }}
-              title="Use template"
+      <div className={styles.marqueeViewport}>
+        <div className={styles.marqueeTrack}>
+          {loopedIdeas.map((idea, index) => (
+            <article
+              key={`${idea.id}-${index}`}
+              className={styles.ideaCard}
+              onClick={() => onSelectIdea(idea.promptTemplate)}
             >
-              <Plus size={14} />
-            </button>
-          </article>
-        ))}
+              <div className={styles.ideaThumb} style={{ background: idea.gradient }} />
+
+              <div className={styles.ideaInfo}>
+                <h3>{idea.title}</h3>
+                <p>{idea.subtitle}</p>
+              </div>
+
+              <button
+                type="button"
+                className={styles.ideaAddBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectIdea(idea.promptTemplate);
+                }}
+                title="Use template"
+              >
+                <Plus size={14} />
+              </button>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
