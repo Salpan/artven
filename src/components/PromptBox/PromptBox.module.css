@@ -40,27 +40,31 @@
 
 .promptCard {
   width: 100%;
-  background: #18181f;
-  border: 1px solid rgba(157, 141, 241, 0.25);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(125deg, #27253a 0%, #1c222a 50%, #242133 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 4px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
 .proBanner {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 8px 16px 10px;
   font-size: 12px;
-  color: #c4b5fd;
-  background: linear-gradient(90deg, rgba(157, 141, 241, 0.14), rgba(96, 165, 250, 0.06));
+  color: #d4d4dc;
+}
+
+.proBanner svg {
+  color: #a78bfa;
 }
 
 .promptInputWrapper {
-  background: var(--bg-surface);
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
   padding: 16px 18px;
-  border-top: 1px solid var(--border-subtle);
 }
 
 .textarea {
