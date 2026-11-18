@@ -65,20 +65,8 @@ export function App() {
           onUpgrade={() => showToast('Pro plan upgrade is available in full version')}
         />
 
-        <main className={styles.mainContent}>
-          {activeTab === 'saved' ? (
-            <WishesSection
-              categories={[DEFAULT_CATEGORY]}
-              activeCategory={DEFAULT_CATEGORY}
-              onSelectCategory={() => {}}
-              items={displayedWishes}
-              onToggleSave={handleToggleSaveWish}
-              onSelectWish={(text) => {
-                setPrompt(text);
-                setActiveTab('home');
-              }}
-            />
-          ) : (
+                <main className={styles.mainContent}>
+          {activeTab === 'home' && (
             <>
               <PromptBox
                 mode={promptMode}
@@ -106,7 +94,39 @@ export function App() {
               />
             </>
           )}
+
+          {activeTab === 'saved' && (
+            <WishesSection
+              categories={[DEFAULT_CATEGORY]}
+              activeCategory={DEFAULT_CATEGORY}
+              onSelectCategory={() => {}}
+              items={displayedWishes}
+              onToggleSave={handleToggleSaveWish}
+              onSelectWish={(text) => {
+                setPrompt(text);
+                setActiveTab('home');
+              }}
+            />
+          )}
+
+          {(activeTab === 'chat' || activeTab === 'results' || activeTab === 'settings') && (
+            <div className={styles.placeholderView}>
+              <span className={styles.placeholderBadge}>Coming soon</span>
+              <h2 className={styles.placeholderTitle}>{activeTab}</h2>
+              <p className={styles.placeholderText}>
+                This section is currently in development. Return to the home workspace to start creating.
+              </p>
+              <button
+                type="button"
+                className={styles.backHomeBtn}
+                onClick={() => setActiveTab('home')}
+              >
+                Back to Home
+              </button>
+            </div>
+          )}
         </main>
+
       </div>
 
       {toastMessage && <div className={styles.toast}>{toastMessage}</div>}
